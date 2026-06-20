@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dalili دليلي | Tunisia Career & Business Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink: #1a1a18;
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-pale: #FDF6E3;
+    --olive: #4A5240;
+    --olive-mid: #6B7A5E;
+    --olive-pale: #EFF2EB;
+    --teal: #2A7A6F;
+    --teal-pale: #E6F4F2;
+    --red: #C0392B;
+    --white: #FAFAF7;
+    --gray: #8a8a85;
+    --border: #D9D4C5;
+    --card: #FFFFFF;
+    --radius: 12px;
+    --shadow: 0 2px 16px rgba(26,26,24,0.09);
+    --shadow-lg: 0 8px 40px rgba(26,26,24,0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter','Cairo',sans-serif; background: var(--white); color: var(--ink); min-height: 100vh; }
+
+  /* HEADER */
+  header { background: var(--olive); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.18); }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-mark { width: 36px; height: 36px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Cairo',sans-serif; font-weight: 900; font-size: 18px; color: var(--olive); }
+  .logo-text { color: var(--white); font-family: 'Cairo',sans-serif; font-weight: 700; font-size: 20px; }
+  .logo-sub { color: var(--gold-light); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: -2px; }
+  .lang-switcher { display: flex; gap: 6px; }
+  .lang-btn { padding: 5px 12px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.25); background: transparent; color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: 'Cairo','Inter',sans-serif; }
+  .lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--olive); font-weight: 700; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--olive) 0%, #333d29 100%); padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(201,168,76,0.12); pointer-events: none; }
+  .hero-flag { font-size: 36px; margin-bottom: 12px; display: block; }
+  .hero h1 { font-family: 'Cairo',sans-serif; font-size: clamp(24px,5vw,40px); font-weight: 900; color: var(--white); line-height: 1.15; margin-bottom: 10px; }
+  .hero h1 span { color: var(--gold); }
+  .hero-sub { color: rgba(255,255,255,0.65); font-size: 15px; max-width: 520px; margin: 0 auto 28px; line-height: 1.6; font-family: 'Cairo',sans-serif; }
+
+  /* TAB NAV */
+  .tab-nav { display: inline-flex; background: rgba(255,255,255,0.1); border-radius: 50px; padding: 4px; gap: 4px; margin-bottom: 28px; }
+  .tab-btn { padding: 9px 18px; border-radius: 40px; border: none; background: transparent; color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.25s; font-family: 'Cairo','Inter',sans-serif; white-space: nowrap; }
+  .tab-btn.active { background: var(--gold); color: var(--olive); }
+
+  /* SEARCH */
+  .search-area { max-width: 620px; margin: 0 auto; position: relative; }
+  .search-input { width: 100%; padding: 16px 56px 16px 20px; border-radius: 50px; border: 2px solid transparent; background: var(--white); font-size: 15px; font-family: 'Cairo','Inter',sans-serif; color: var(--ink); outline: none; box-shadow: 0 4px 24px rgba(0,0,0,0.2); transition: border 0.2s; }
+  .search-input:focus { border-color: var(--gold); }
+  .search-input::placeholder { color: var(--gray); }
+  .search-btn { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: none; background: var(--gold); color: var(--olive); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .search-btn:hover { background: var(--gold-light); }
+  .quick-examples { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
+  .example-chip { padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); font-size: 12px; cursor: pointer; transition: all 0.2s; font-family: 'Cairo','Inter',sans-serif; }
+  .example-chip:hover { background: rgba(201,168,76,0.25); border-color: var(--gold); color: var(--gold-light); }
+  .error-box { background: #FDE8E8; border: 1px solid #F0A0A0; border-radius: var(--radius); padding: 14px 18px; color: #8B1C1C; font-size: 14px; font-family: 'Cairo',sans-serif; display: none; margin-top: 14px; max-width: 620px; margin-left: auto; margin-right: auto; }
+
+  /* ===== PROFILE PANEL ===== */
+  .profile-panel { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); max-width: 680px; margin: 0 auto; padding: 20px 22px; text-align: left; }
+  .profile-panel-title { color: var(--gold); font-family: 'Cairo',sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .profile-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .profile-tag-input { flex: 1; min-width: 180px; padding: 9px 14px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: var(--white); font-size: 13px; font-family: 'Cairo','Inter',sans-serif; outline: none; }
+  .profile-tag-input::placeholder { color: rgba(255,255,255,0.4); }
+  .profile-tag-input:focus { border-color: var(--gold); }
+  .profile-add-btn { padding: 9px 16px; border-radius: 8px; border: none; background: var(--gold); color: var(--olive); font-weight: 700; font-size: 13px; cursor: pointer; font-family: 'Cairo','Inter',sans-serif; white-space: nowrap; }
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; min-height: 28px; }
+  .profile-tag { padding: 4px 10px 4px 12px; border-radius: 20px; background: rgba(201,168,76,0.2); border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light); font-size: 12px; font-family: 'Cairo','Inter',sans-serif; display: flex; align-items: center; gap: 6px; }
+  .profile-tag-x { cursor: pointer; opacity: 0.6; font-size: 14px; line-height: 1; }
+  .profile-tag-x:hover { opacity: 1; }
+  .profile-analyze-btn { width: 100%; padding: 11px; border-radius: 8px; border: none; background: var(--teal); color: white; font-weight: 700; font-size: 14px; cursor: pointer; font-family: 'Cairo','Inter',sans-serif; transition: background 0.2s; }
+  .profile-analyze-btn:hover { background: #1f6158; }
+  .profile-analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* MAIN LAYOUT */
+  main { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* LOADING */
+  .loading-state { text-align: center; padding: 60px 20px; display: none; }
+  .loader-ring { width: 48px; height: 48px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-text { color: var(--gray); font-size: 14px; font-family: 'Cairo',sans-serif; }
+
+  /* PROFILE RESULTS */
+  .profile-results { display: none; margin-bottom: 32px; }
+  .profile-results-header { font-family: 'Cairo',sans-serif; font-weight: 800; font-size: 18px; color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .profile-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .profile-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
+  .profile-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--teal); }
+  .profile-card:hover { border-color: var(--teal); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .profile-card-type { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal); margin-bottom: 6px; font-family: 'Cairo',sans-serif; }
+  .profile-card-title { font-family: 'Cairo',sans-serif; font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 6px; }
+  .profile-card-desc { font-size: 12px; color: var(--gray); line-height: 1.5; font-family: 'Cairo','Inter',sans-serif; }
+  .profile-card-cta { margin-top: 10px; font-size: 12px; color: var(--teal); font-weight: 600; font-family: 'Cairo',sans-serif; }
+
+  /* SKILL GAPS */
+  .skill-gap-section { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 24px; }
+  .skill-gap-title { font-family: 'Cairo',sans-serif; font-weight: 700; font-size: 15px; color: var(--olive); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .skill-gap-list { display: flex; flex-direction: column; gap: 12px; }
+  .skill-gap-item { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px dashed var(--border); }
+  .skill-gap-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .skill-gap-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+  .skill-gap-content { flex: 1; }
+  .skill-gap-name { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 4px; font-family: 'Cairo',sans-serif; }
+  .skill-gap-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .skill-link { padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-decoration: none; font-family: 'Cairo','Inter',sans-serif; display: inline-flex; align-items: center; gap: 4px; }
+  .skill-link-yt { background: #FEE2E2; color: #B91C1C; border: 1px solid #FCA5A5; }
+  .skill-link-yt:hover { background: #FCA5A5; }
+  .skill-link-course { background: #EDE9FE; color: #5B21B6; border: 1px solid #C4B5FD; }
+  .skill-link-course:hover { background: #C4B5FD; }
+  .skill-link-job { background: var(--teal-pale); color: var(--teal); border: 1px solid #A7D9D4; }
+  .skill-link-job:hover { background: #A7D9D4; }
+
+  /* JOB OFFERS STRIP */
+  .job-offers-section { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px 22px; margin-bottom: 24px; }
+  .job-offers-grid { display: flex; flex-direction: column; gap: 10px; }
+  .job-offer-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px; border-radius: 8px; background: var(--olive-pale); border: 1px solid #C5CDB8; }
+  .job-offer-badge { background: var(--olive); color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; font-family: 'Cairo',sans-serif; }
+  .job-offer-title { font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 3px; font-family: 'Cairo',sans-serif; }
+  .job-offer-meta { font-size: 12px; color: var(--gray); font-family: 'Cairo','Inter',sans-serif; }
+  .job-offer-link { margin-left: auto; padding: 5px 12px; border-radius: 6px; background: var(--olive); color: white; font-size: 11px; font-weight: 600; text-decoration: none; white-space: nowrap; font-family: 'Cairo',sans-serif; flex-shrink: 0; }
+  .job-offer-link:hover { background: var(--olive-mid); }
+
+  /* RESULT CARD (existing) */
+  .result-container { display: none; }
+  .result-header { background: linear-gradient(135deg, var(--olive) 0%, #333d29 100%); border-radius: var(--radius) var(--radius) 0 0; padding: 28px 28px 24px; color: var(--white); }
+  .result-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--gold); color: var(--olive); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; font-family: 'Cairo',sans-serif; }
+  .result-title { font-family: 'Cairo',sans-serif; font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+  .result-subtitle { color: rgba(255,255,255,0.6); font-size: 13px; }
+  .result-body { background: var(--card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius); box-shadow: var(--shadow-lg); }
+  .result-section { padding: 24px 28px; border-bottom: 1px solid var(--border); }
+  .result-section:last-child { border-bottom: none; }
+  .section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .section-icon { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .icon-gold { background: #FDF3D8; } .icon-blue { background: #EAF0FB; } .icon-green { background: #E8F5E9; } .icon-red { background: #FDE8E8; } .icon-purple { background: #EDE7F6; } .icon-teal { background: var(--teal-pale); }
+  .section-title { font-family: 'Cairo',sans-serif; font-weight: 700; font-size: 15px; color: var(--olive); }
+  .section-content { font-size: 14px; line-height: 1.75; color: #2d2d2b; white-space: pre-wrap; font-family: 'Cairo','Inter',sans-serif; }
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+  .step-item { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+  .step-item:last-child { border-bottom: none; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--olive); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'Cairo',sans-serif; margin-top: 2px; }
+  .step-content { flex: 1; }
+  .step-title { font-weight: 600; font-size: 14px; color: var(--ink); font-family: 'Cairo',sans-serif; margin-bottom: 3px; }
+  .step-detail { font-size: 13px; color: var(--gray); line-height: 1.5; font-family: 'Cairo','Inter',sans-serif; }
+
+  /* EMPTY STATE */
+  .empty-state { text-align: center; padding: 60px 20px; }
+  .empty-icon { font-size: 56px; margin-bottom: 16px; display: block; }
+  .empty-title { font-family: 'Cairo',sans-serif; font-size: 20px; font-weight: 700; color: var(--olive); margin-bottom: 8px; }
+  .empty-sub { color: var(--gray); font-size: 14px; max-width: 360px; margin: 0 auto; font-family: 'Cairo',sans-serif; line-height: 1.6; }
+
+  footer { background: var(--olive); text-align: center; padding: 20px; color: rgba(255,255,255,0.45); font-size: 12px; font-family: 'Cairo',sans-serif; }
+  footer span { color: var(--gold); }
+  .rtl { direction: rtl; text-align: right; }
+  .rtl .search-btn { right: auto; left: 6px; }
+  .rtl .search-input { padding: 16px 20px 16px 56px; }
+  .rtl .profile-card::before { left: auto; right: 0; }
+  .rtl .job-offer-link { margin-left: 0; margin-right: auto; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 36px 16px 32px; }
+    .result-section { padding: 18px 16px; }
+    .result-header { padding: 20px 16px 16px; }
+    .tab-btn { padding: 8px 12px; font-size: 12px; }
+    .profile-cards-grid { grid-template-columns: 1fr; }
+  }
+
+  .divider { border: none; border-top: 2px dashed var(--border); margin: 28px 0; }
+  .section-heading { font-family: 'Cairo',sans-serif; font-weight: 800; font-size: 17px; color: var(--ink); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">د</div>
+    <div>
+      <div class="logo-text">Dalili — دليلي</div>
+      <div class="logo-sub">Tunisia Career & Business Guide</div>
+    </div>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<div class="hero" id="hero">
+  <span class="hero-flag">🇹🇳</span>
+  <h1 id="hero-title">Quel est ton projet <span>professionnel</span>&nbsp;?</h1>
+  <p class="hero-sub" id="hero-sub">Entrez un métier, un secteur ou un projet d'entreprise — obtenez un guide complet adapté à la Tunisie.</p>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" id="tab-job" onclick="setMode('job')"><span id="mode-job-label">💼 Trouver un Métier</span></button>
+    <button class="tab-btn" id="tab-biz" onclick="setMode('business')"><span id="mode-biz-label">🏢 Créer une Entreprise</span></button>
+    <button class="tab-btn" id="tab-profile" onclick="setMode('profile')"><span id="mode-profile-label">🎓 Mon Profil</span></button>
+  </div>
+
+  <!-- JOB / BIZ SEARCH -->
+  <div id="search-section">
+    <div class="search-area">
+      <input type="text" class="search-input" id="searchInput" placeholder="Ex: médecin, avocat, ingénieur..." onkeydown="if(event.key==='Enter') doSearch()"/>
+      <button class="search-btn" onclick="doSearch()">→</button>
+    </div>
+    <div class="quick-examples" id="quickExamples">
+      <span class="example-chip" onclick="quickSearch('Médecin')">Médecin</span>
+      <span class="example-chip" onclick="quickSearch('Avocat')">Avocat</span>
+      <span class="example-chip" onclick="quickSearch('Architecte')">Architecte</span>
+      <span class="example-chip" onclick="quickSearch('Comptable')">Comptable</span>
+      <span class="example-chip" onclick="quickSearch('Enseignant')">Enseignant</span>
+      <span class="example-chip" onclick="quickSearch('Electricien')">Electricien</span>
+    </div>
+  </div>
+
+  <!-- PROFILE SECTION -->
+  <div id="profile-section" style="display:none; max-width:680px; margin:0 auto;">
+    <div class="profile-panel">
+      <div class="profile-panel-title">✨ <span id="profile-panel-title-text">Entrez vos diplômes, compétences ou expériences</span></div>
+      <div class="profile-row">
+        <input type="text" class="profile-tag-input" id="profileTagInput" placeholder="Ex: Licence informatique, Excel, 3 ans RH..." onkeydown="if(event.key==='Enter') addProfileTag()"/>
+        <button class="profile-add-btn" onclick="addProfileTag()" id="add-tag-btn">+ Ajouter</button>
+      </div>
+      <div class="profile-tags" id="profileTags"></div>
+      <button class="profile-analyze-btn" id="analyzeBtn" onclick="doProfileAnalysis()" disabled>
+        <span id="analyze-btn-text">🔍 Analyser mon profil</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="errorBox" class="error-box"></div>
+</div>
+
+<main>
+  <div class="empty-state" id="emptyState">
+    <span class="empty-icon">🗺️</span>
+    <div class="empty-title" id="empty-title">Votre guide vous attend</div>
+    <div class="empty-sub" id="empty-sub">Saisissez un métier ou un projet d'entreprise pour obtenir toutes les étapes, les documents, et les administrations concernées en Tunisie.</div>
+  </div>
+
+  <div class="loading-state" id="loadingState">
+    <div class="loader-ring"></div>
+    <div class="loading-text" id="loading-text">Préparation de votre guide...</div>
+  </div>
+
+  <!-- PROFILE RESULTS -->
+  <div class="profile-results" id="profileResults">
+    <div class="profile-results-header">✨ <span id="pr-header-text">Opportunités basées sur votre profil</span></div>
+
+    <div class="section-heading" id="pr-jobs-title">💼 Métiers recommandés</div>
+    <div class="profile-cards-grid" id="profileJobCards"></div>
+
+    <div class="section-heading" id="pr-biz-title">🏢 Idées d'entreprise</div>
+    <div class="profile-cards-grid" id="profileBizCards"></div>
+
+    <hr class="divider"/>
+
+    <div class="skill-gap-section">
+      <div class="skill-gap-title">📚 <span id="pr-skills-title">Compétences à acquérir</span></div>
+      <div class="skill-gap-list" id="skillGapList"></div>
+    </div>
+
+    <div class="job-offers-section">
+      <div class="skill-gap-title">🔗 <span id="pr-offers-title">Où trouver des offres d'emploi en Tunisie</span></div>
+      <div class="job-offers-grid" id="jobOffersList"></div>
+    </div>
+  </div>
+
+  <!-- STANDARD RESULTS -->
+  <div class="result-container" id="resultContainer"></div>
+</main>
+
+<footer><span>Dalili دليلي</span> — Guide Tunisien Professionnel & Entrepreneurial &nbsp;|&nbsp; Powered by AI</footer>
+
+<script>
+window.addEventListener('error', function(e) {
+  console.error('Uncaught error:', e.error || e.message);
+  const box = document.getElementById('errorBox');
+  if (box) {
+    box.textContent = 'Erreur technique: ' + (e.message || 'voir console (F12)');
+    box.style.display = 'block';
+  }
+  const ls = document.getElementById('loadingState');
+  if (ls) ls.style.display = 'none';
+});
+
+let currentLang = 'fr';
+let currentMode = 'job';
+let profileTags = [];
+
+const UI = {
+  fr: {
+    heroTitle: 'Quel est ton projet <span>professionnel</span>&nbsp;?',
+    heroSub: "Entrez un métier, un secteur ou un projet d'entreprise — obtenez un guide complet adapté à la Tunisie.",
+    modeJob: '💼 Trouver un Métier', modeBiz: '🏢 Créer une Entreprise', modeProfile: '🎓 Mon Profil',
+    placeholder: { job: 'Ex: médecin, avocat, ingénieur, comptable...', biz: 'Ex: café, boutique en ligne, agence, restaurant...' },
+    emptyTitle: 'Votre guide vous attend',
+    emptySub: "Saisissez un métier ou un projet d'entreprise — ou analysez votre profil.",
+    loading: 'Préparation de votre guide...',
+    loadingProfile: 'Analyse de votre profil en cours...',
+    examples: {
+      job: ['Médecin','Avocat','Architecte','Comptable','Enseignant','Electricien'],
+      biz: ['Café','Boutique en ligne','Restaurant','Agence digitale','Auto-école','Pharmacie']
+    },
+    profilePlaceholder: 'Ex: Licence informatique, Excel, 3 ans RH...',
+    profileTitle: 'Entrez vos diplômes, compétences ou expériences',
+    addTag: '+ Ajouter', analyzeBtn: '🔍 Analyser mon profil',
+    prHeader: 'Opportunités basées sur votre profil',
+    prJobs: '💼 Métiers recommandés', prBiz: '🏢 Idées d\'entreprise',
+    prSkills: '📚 Compétences à acquérir', prOffers: '🔗 Où trouver des offres d\'emploi en Tunisie',
+    clickJob: '→ Voir le guide complet', clickBiz: '→ Voir le guide complet'
+  },
+  ar: {
+    heroTitle: 'شنو مشروعك <span>المهني</span>؟',
+    heroSub: 'أكتب المهنة ولا المشروع اللي تحلم فيه — نعطيك دليل كامل مخصص لتونس.',
+    modeJob: '💼 نلقى مهنة', modeBiz: '🏢 نفتح مشروع', modeProfile: '🎓 بروفايلي',
+    placeholder: { job: 'مثال: طبيب، محامي، مهندس...', biz: 'مثال: مقهى، حانوت، مطعم...' },
+    emptyTitle: 'دليلك ينستناك',
+    emptySub: 'أكتب المهنة ولا المشروع، أو حلل بروفايلك.',
+    loading: 'نعمل دليلك...', loadingProfile: 'نحلل بروفايلك...',
+    examples: {
+      job: ['طبيب','محامي','معلم','كهربائي','مهندس','صيدلاني'],
+      biz: ['مقهى','مطعم','حانوت أونلاين','وكالة','صيدلية','مدرسة تعليم سياقة']
+    },
+    profilePlaceholder: 'مثال: ليسانس، اكسيل، 3 سنين تجربة...',
+    profileTitle: 'أكتب شهاداتك، مهاراتك أو تجربتك',
+    addTag: '+ زيد', analyzeBtn: '🔍 حلل بروفايلي',
+    prHeader: 'الفرص المناسبة لبروفايلك',
+    prJobs: '💼 المهن المقترحة', prBiz: '🏢 أفكار مشاريع',
+    prSkills: '📚 مهارات تحتاج تتعلمها', prOffers: '🔗 وين تلقى وظائف في تونس',
+    clickJob: '← شوف الدليل الكامل', clickBiz: '← شوف الدليل الكامل'
+  },
+  en: {
+    heroTitle: "What's your <span>professional</span> goal?",
+    heroSub: 'Enter a job title or business idea — get a complete Tunisia-specific step-by-step guide.',
+    modeJob: '💼 Explore a Career', modeBiz: '🏢 Start a Business', modeProfile: '🎓 My Profile',
+    placeholder: { job: 'e.g. doctor, lawyer, engineer, accountant...', biz: 'e.g. café, online shop, agency, restaurant...' },
+    emptyTitle: 'Your guide is ready to generate',
+    emptySub: 'Enter a job title, business idea, or analyze your profile.',
+    loading: 'Preparing your guide...', loadingProfile: 'Analyzing your profile...',
+    examples: {
+      job: ['Doctor','Lawyer','Architect','Accountant','Teacher','Electrician'],
+      biz: ['Café','Online Shop','Restaurant','Digital Agency','Driving School','Pharmacy']
+    },
+    profilePlaceholder: 'e.g. Bachelor CS, Excel, 3 years HR...',
+    profileTitle: 'Enter your diplomas, skills or experience',
+    addTag: '+ Add', analyzeBtn: '🔍 Analyze my profile',
+    prHeader: 'Opportunities based on your profile',
+    prJobs: '💼 Recommended Careers', prBiz: '🏢 Business Ideas',
+    prSkills: '📚 Skills to Acquire', prOffers: '🔗 Where to find jobs in Tunisia',
+    clickJob: '→ See full guide', clickBiz: '→ See full guide'
+  }
+};
+
+// ── LANG / MODE ──────────────────────────────────────────
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  const u = UI[lang];
+  document.getElementById('hero-title').innerHTML = u.heroTitle;
+  document.getElementById('hero-sub').textContent = u.heroSub;
+  document.getElementById('mode-job-label').textContent = u.modeJob;
+  document.getElementById('mode-biz-label').textContent = u.modeBiz;
+  document.getElementById('mode-profile-label').textContent = u.modeProfile;
+  document.getElementById('empty-title').textContent = u.emptyTitle;
+  document.getElementById('empty-sub').textContent = u.emptySub;
+  document.getElementById('profile-panel-title-text').textContent = u.profileTitle;
+  document.getElementById('profileTagInput').placeholder = u.profilePlaceholder;
+  document.getElementById('add-tag-btn').textContent = u.addTag;
+  document.getElementById('analyze-btn-text').textContent = u.analyzeBtn;
+  document.getElementById('pr-header-text').textContent = u.prHeader;
+  document.getElementById('pr-jobs-title').textContent = u.prJobs;
+  document.getElementById('pr-biz-title').textContent = u.prBiz;
+  document.getElementById('pr-skills-title').textContent = u.prSkills;
+  document.getElementById('pr-offers-title').textContent = u.prOffers;
+  if (currentMode !== 'profile') {
+    const uiKey = currentMode === 'business' ? 'biz' : 'job';
+    document.getElementById('searchInput').placeholder = u.placeholder[uiKey] || '';
+    const chips = u.examples[uiKey] || [];
+    const qContainer = document.getElementById('quickExamples');
+    qContainer.innerHTML = '';
+    chips.forEach(c => {
+      const chip = document.createElement('span');
+      chip.className = 'example-chip';
+      chip.textContent = c;
+      chip.addEventListener('click', () => quickSearch(c));
+      qContainer.appendChild(chip);
+    });
+  }
+  const isRTL = lang === 'ar';
+  document.getElementById('hero').style.direction = isRTL ? 'rtl' : 'ltr';
+  document.querySelector('main').style.direction = isRTL ? 'rtl' : 'ltr';
+}
+
+function setMode(mode) {
+  // Normalize: callers pass 'business' (tab) but UI.examples/placeholder use 'biz' as the key.
+  const uiKey = mode === 'business' ? 'biz' : mode === 'job' ? 'job' : 'profile';
+  currentMode = mode;
+  ['job','biz','profile'].forEach(m => document.getElementById(`tab-${m}`).classList.remove('active'));
+  document.getElementById(`tab-${uiKey}`).classList.add('active');
+  document.getElementById('search-section').style.display = mode === 'profile' ? 'none' : 'block';
+  document.getElementById('profile-section').style.display = mode === 'profile' ? 'block' : 'none';
+  document.getElementById('resultContainer').style.display = 'none';
+  document.getElementById('profileResults').style.display = 'none';
+  document.getElementById('emptyState').style.display = mode === 'profile' ? 'none' : 'block';
+  document.getElementById('errorBox').style.display = 'none';
+  if (mode !== 'profile') {
+    document.getElementById('searchInput').value = '';
+    document.getElementById('searchInput').placeholder = UI[currentLang].placeholder[uiKey] || '';
+    const chips = UI[currentLang].examples[uiKey] || [];
+    const qContainer = document.getElementById('quickExamples');
+    qContainer.innerHTML = '';
+    chips.forEach(c => {
+      const chip = document.createElement('span');
+      chip.className = 'example-chip';
+      chip.textContent = c;
+      chip.addEventListener('click', () => quickSearch(c));
+      qContainer.appendChild(chip);
+    });
+  }
+}
+
+function quickSearch(val) {
+  document.getElementById('searchInput').value = val;
+  doSearch();
+}
+
+// ── PROFILE TAGS ─────────────────────────────────────────
+function addProfileTag() {
+  const input = document.getElementById('profileTagInput');
+  const val = input.value.trim();
+  if (!val || profileTags.includes(val)) { input.value = ''; return; }
+  profileTags.push(val);
+  input.value = '';
+  renderTags();
+}
+
+function removeTag(val) {
+  profileTags = profileTags.filter(t => t !== val);
+  renderTags();
+}
+
+function renderTags() {
+  const container = document.getElementById('profileTags');
+  container.innerHTML = '';
+  profileTags.forEach(t => {
+    const tag = document.createElement('span');
+    tag.className = 'profile-tag';
+    tag.appendChild(document.createTextNode(t));
+    const x = document.createElement('span');
+    x.className = 'profile-tag-x';
+    x.textContent = '×';
+    x.addEventListener('click', () => removeTag(t));
+    tag.appendChild(x);
+    container.appendChild(tag);
+  });
+  document.getElementById('analyzeBtn').disabled = profileTags.length === 0;
+}
+
+// ── API CALL ──────────────────────────────────────────────
+// Works two ways automatically:
+// 1) Deployed on Netlify -> calls the secure /.netlify/functions/ask proxy (API key stays on server)
+// 2) Opened locally as a file -> calls Anthropic directly using a key you paste in once (stored in this browser only)
+const isLocalFile = window.location.protocol === 'file:';
+
+function getLocalApiKey() {
+  let key = localStorage.getItem('dalili_api_key');
+  if (!key) {
+    key = prompt('Mode local détecté.\nEntrez votre clé API Anthropic (elle reste uniquement sur cet ordinateur):');
+    if (key) localStorage.setItem('dalili_api_key', key.trim());
+  }
+  return key ? key.trim() : null;
+}
+
+async function callAPI(prompt) {
+  let response, data;
+
+  if (isLocalFile) {
+    // Local file mode — direct call with browser-stored key
+    const key = getLocalApiKey();
+    if (!key) throw new Error('Clé API requise pour le mode local');
+    response = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": key,
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true"
+      },
+      body: JSON.stringify({
+        model: "claude-sonnet-4-6",
+        max_tokens: 8000,
+        messages: [{ role: "user", content: prompt }]
+      })
+    });
+    if (!response.ok) {
+      const e = await response.json().catch(() => ({}));
+      if (response.status === 401) { localStorage.removeItem('dalili_api_key'); }
+      throw new Error(e?.error?.message || `HTTP ${response.status}`);
+    }
+    data = await response.json();
+    const raw = (data.content || []).map(i => i.text || '').join('');
+    const a = raw.indexOf('{'), b = raw.lastIndexOf('}');
+    if (a === -1 || b === -1) throw new Error('Aucun JSON trouvé dans la réponse');
+    return JSON.parse(raw.slice(a, b + 1));
+  } else {
+    // Website mode — secure server-side proxy, no key exposed in browser
+    response = await fetch("/.netlify/functions/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt })
+    });
+    if (!response.ok) {
+      const e = await response.json().catch(() => ({}));
+      throw new Error(e?.error || `HTTP ${response.status}`);
+    }
+    data = await response.json();
+    const raw = (data.content || []).map(i => i.text || '').join('');
+    const a = raw.indexOf('{'), b = raw.lastIndexOf('}');
+    if (a === -1 || b === -1) throw new Error('Aucun JSON trouvé dans la réponse');
+    return JSON.parse(raw.slice(a, b + 1));
+  }
+}
+
+function showError(msg) {
+  const box = document.getElementById('errorBox');
+  box.textContent = msg;
+  box.style.display = 'block';
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('emptyState').style.display = currentMode !== 'profile' ? 'block' : 'none';
+}
+
+// ── JOB / BIZ SEARCH ─────────────────────────────────────
+function buildPrompt(query, mode, lang) {
+  const L = { fr: 'Répondez UNIQUEMENT en français.', ar: 'أجب باللهجة التونسية العربية الدارجة (ليس الفصحى).', en: 'Respond ONLY in English.' };
+  if (mode === 'job') {
+    return `${L[lang]}
+You are a Tunisian career advisor. User wants to work as: "${query}" in Tunisia.
+Return ONLY valid JSON, no markdown, no backticks. Keep each string under 120 chars.
+{"jobTitle":"profession name","overview":"2 sentences on this job in Tunisia with salary range in TND","paperwork":[{"title":"document name","detail":"where to get it and cost in TND"},{"title":"document name","detail":"where to get it and cost in TND"},{"title":"document name","detail":"where to get it and cost in TND"},{"title":"document name","detail":"where to get it and cost in TND"}],"certifications":[{"title":"certification name","detail":"issuing body and duration"},{"title":"certification name","detail":"issuing body and duration"},{"title":"certification name","detail":"issuing body and duration"}],"administrations":[{"name":"administration name","role":"what they do for this profession","contact":"website or address"},{"name":"administration name","role":"what they do for this profession","contact":"website or address"},{"name":"administration name","role":"what they do for this profession","contact":"website or address"}],"actionPlan":[{"step":1,"title":"step title","detail":"what to do and where"},{"step":2,"title":"step title","detail":"what to do and where"},{"step":3,"title":"step title","detail":"what to do and where"},{"step":4,"title":"step title","detail":"what to do and where"},{"step":5,"title":"step title","detail":"what to do and where"},{"step":6,"title":"step title","detail":"what to do and where"},{"step":7,"title":"step title","detail":"what to do and where"}],"tips":"3 practical Tunisia-specific tips for this profession"}
+Fill every field with real Tunisia-specific info. Reference: CNSS, APII, Ordre des Médecins, Ordre des Avocats, OECT, ANETI, Ministères as appropriate.`;
+  } else {
+    return `${L[lang]}
+You are a Tunisian business advisor. User wants to open: "${query}" in Tunisia.
+Return ONLY valid JSON, no markdown, no backticks. Keep each string under 120 chars.
+{"businessTitle":"business type name","overview":"2 sentences on this business in Tunisia with investment range in TND","legalStructures":[{"type":"Auto-entrepreneur / Moubadir Dhati","pros":"No capital required, simple tax, fast APII registration","minCapital":"Aucun"},{"type":"SARL","pros":"Limited liability, credibility, up to 50 partners","minCapital":"1000 DT"},{"type":"Entreprise Individuelle","pros":"Simple, low admin, owner fully responsible","minCapital":"Aucun"}],"paperwork":[{"title":"document name","detail":"where to get it and cost"},{"title":"document name","detail":"where to get it and cost"},{"title":"document name","detail":"where to get it and cost"},{"title":"document name","detail":"where to get it and cost"},{"title":"document name","detail":"where to get it and cost"}],"licenses":[{"title":"license name","detail":"issuing body and conditions"},{"title":"license name","detail":"issuing body and conditions"},{"title":"license name","detail":"issuing body and conditions"}],"administrations":[{"name":"administration name","role":"their role in business creation","contact":"website or address"},{"name":"administration name","role":"their role in business creation","contact":"website or address"},{"name":"administration name","role":"their role in business creation","contact":"website or address"},{"name":"administration name","role":"their role in business creation","contact":"website or address"}],"actionPlan":[{"step":1,"title":"step title","detail":"what to do and where"},{"step":2,"title":"step title","detail":"what to do and where"},{"step":3,"title":"step title","detail":"what to do and where"},{"step":4,"title":"step title","detail":"what to do and where"},{"step":5,"title":"step title","detail":"what to do and where"},{"step":6,"title":"step title","detail":"what to do and where"},{"step":7,"title":"step title","detail":"what to do and where"},{"step":8,"title":"step title","detail":"what to do and where"}],"funding":"2 sentences on BTS, BFPME, Enda Tamweel options for this business","tips":"3 practical Tunisia-specific tips for this business"}
+Fill every field with real Tunisia-specific info. Reference: APII, RNE, CNSS, Recette des Finances, Municipalité, BTS, BFPME, Enda Tamweel as appropriate.`;
+  }
+}
+
+async function doSearch() {
+  const query = document.getElementById('searchInput').value.trim();
+  if (!query) return;
+  document.getElementById('errorBox').style.display = 'none';
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('resultContainer').style.display = 'none';
+  document.getElementById('profileResults').style.display = 'none';
+  document.getElementById('loadingState').style.display = 'block';
+  document.getElementById('loading-text').textContent = UI[currentLang].loading;
+  try {
+    const result = await callAPI(buildPrompt(query, currentMode, currentLang));
+    renderResult(result, query);
+  } catch(err) {
+    showError(currentLang === 'ar' ? `صرا خطأ. حاول مرة أخرى. (${err.message})` : currentLang === 'fr' ? `Une erreur est survenue. (${err.message})` : `An error occurred. (${err.message})`);
+  }
+}
+
+// ── PROFILE ANALYSIS ──────────────────────────────────────
+function buildProfilePrompt(tags, lang) {
+  const L = { fr: 'Répondez UNIQUEMENT en français.', ar: 'أجب باللهجة التونسية العربية الدارجة (ليس الفصحى).', en: 'Respond ONLY in English.' };
+  return `${L[lang]}
+You are a Tunisian career and business advisor. A person in Tunisia has these qualifications/skills/experience: ${tags.join(', ')}.
+
+Return ONLY valid JSON, no markdown, no backticks. Keep each string under 100 chars.
+
+{"jobSuggestions":[{"title":"job title","match":"why it fits their profile in 1 sentence","salaryRange":"realistic TND range"},{"title":"job title","match":"why it fits their profile in 1 sentence","salaryRange":"realistic TND range"},{"title":"job title","match":"why it fits their profile in 1 sentence","salaryRange":"realistic TND range"},{"title":"job title","match":"why it fits their profile in 1 sentence","salaryRange":"realistic TND range"}],"bizSuggestions":[{"title":"business idea","match":"why it fits their profile in 1 sentence","investment":"realistic TND range"},{"title":"business idea","match":"why it fits their profile in 1 sentence","investment":"realistic TND range"},{"title":"business idea","match":"why it fits their profile in 1 sentence","investment":"realistic TND range"}],"skillGaps":[{"skill":"missing skill name","why":"why this skill is needed for their profile","youtubeQuery":"exact YouTube search query to learn this skill in Arabic or French","courseLink":"https://www.coursera.org or https://www.udemy.com or https://www.linkedin.com/learning"},{"skill":"missing skill name","why":"why this skill is needed for their profile","youtubeQuery":"exact YouTube search query to learn this skill","courseLink":"https://www.coursera.org or https://www.udemy.com"},{"skill":"missing skill name","why":"why this skill is needed for their profile","youtubeQuery":"exact YouTube search query","courseLink":"https://www.udemy.com"},{"skill":"missing skill name","why":"why this skill is needed","youtubeQuery":"exact YouTube search query","courseLink":"https://www.coursera.org"}],"jobPlatforms":[{"name":"Keejob","url":"https://www.keejob.com","description":"biggest Tunisian job board"},{"name":"Tunisie Travail","url":"https://www.tunisietravail.net","description":"Tunisian jobs and internships"},{"name":"LinkedIn Tunisie","url":"https://www.linkedin.com/jobs/search/?location=Tunisie","description":"professional network jobs"},{"name":"ANETI","url":"https://www.emploi.nat.tn","description":"official government employment agency"},{"name":"Optioncarriere","url":"https://www.optioncarriere.tn","description":"Tunisian career portal"},{"name":"Indeed Tunisie","url":"https://tn.indeed.com","description":"international platform with Tunisian listings"}]}
+
+Be specific to Tunisia. jobSuggestions and bizSuggestions must match their actual profile. skillGaps should be real gaps based on what they listed.`;
+}
+
+async function doProfileAnalysis() {
+  if (profileTags.length === 0) return;
+  document.getElementById('errorBox').style.display = 'none';
+  document.getElementById('profileResults').style.display = 'none';
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('loadingState').style.display = 'block';
+  document.getElementById('loading-text').textContent = UI[currentLang].loadingProfile;
+  try {
+    const result = await callAPI(buildProfilePrompt(profileTags, currentLang));
+    renderProfileResults(result);
+  } catch(err) {
+    showError(currentLang === 'ar' ? `صرا خطأ. (${err.message})` : currentLang === 'fr' ? `Erreur lors de l'analyse. (${err.message})` : `Analysis error. (${err.message})`);
+  }
+}
+
+function renderProfileResults(data) {
+  document.getElementById('loadingState').style.display = 'none';
+  const isRTL = currentLang === 'ar';
+  const L = UI[currentLang];
+
+  // Job cards — built with safe DOM methods (no inline onclick, so quotes/apostrophes in titles never break it)
+  const jobContainer = document.getElementById('profileJobCards');
+  jobContainer.innerHTML = '';
+  (data.jobSuggestions || []).forEach(j => {
+    const card = document.createElement('div');
+    card.className = 'profile-card' + (isRTL ? ' rtl' : '');
+    const typeDiv = document.createElement('div');
+    typeDiv.className = 'profile-card-type';
+    typeDiv.textContent = currentLang === 'ar' ? 'مهنة مقترحة' : currentLang === 'fr' ? 'Métier suggéré' : 'Suggested Career';
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'profile-card-title';
+    titleDiv.textContent = j.title || '';
+    const matchDiv = document.createElement('div');
+    matchDiv.className = 'profile-card-desc';
+    matchDiv.textContent = j.match || '';
+    const salaryDiv = document.createElement('div');
+    salaryDiv.className = 'profile-card-desc';
+    salaryDiv.style.cssText = 'margin-top:4px; color: var(--teal); font-weight:600;';
+    salaryDiv.textContent = '💰 ' + (j.salaryRange || '');
+    const ctaDiv = document.createElement('div');
+    ctaDiv.className = 'profile-card-cta';
+    ctaDiv.textContent = L.clickJob;
+    card.append(typeDiv, titleDiv, matchDiv, salaryDiv, ctaDiv);
+    card.addEventListener('click', () => switchToJobGuide(j.title || ''));
+    jobContainer.appendChild(card);
+  });
+
+  // Biz cards — same safe pattern
+  const bizContainer = document.getElementById('profileBizCards');
+  bizContainer.innerHTML = '';
+  (data.bizSuggestions || []).forEach(b => {
+    const card = document.createElement('div');
+    card.className = 'profile-card' + (isRTL ? ' rtl' : '');
+    const typeDiv = document.createElement('div');
+    typeDiv.className = 'profile-card-type';
+    typeDiv.style.color = 'var(--gold)';
+    typeDiv.textContent = currentLang === 'ar' ? 'فكرة مشروع' : currentLang === 'fr' ? "Idée d'entreprise" : 'Business Idea';
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'profile-card-title';
+    titleDiv.textContent = b.title || '';
+    const matchDiv = document.createElement('div');
+    matchDiv.className = 'profile-card-desc';
+    matchDiv.textContent = b.match || '';
+    const investDiv = document.createElement('div');
+    investDiv.className = 'profile-card-desc';
+    investDiv.style.cssText = 'margin-top:4px; color: var(--gold); font-weight:600;';
+    investDiv.textContent = '💵 ' + (b.investment || '');
+    const ctaDiv = document.createElement('div');
+    ctaDiv.className = 'profile-card-cta';
+    ctaDiv.style.color = 'var(--gold)';
+    ctaDiv.textContent = L.clickBiz;
+    card.append(typeDiv, titleDiv, matchDiv, investDiv, ctaDiv);
+    card.addEventListener('click', () => switchToBizGuide(b.title || ''));
+    bizContainer.appendChild(card);
+  });
+
+  // Skill gaps
+  const gaps = (data.skillGaps || []).map(s => `
+    <div class="skill-gap-item ${isRTL ? 'rtl' : ''}">
+      <div class="skill-gap-icon">📖</div>
+      <div class="skill-gap-content">
+        <div class="skill-gap-name">${s.skill}</div>
+        <div class="step-detail">${s.why}</div>
+        <div class="skill-gap-links">
+          <a class="skill-link skill-link-yt" href="https://www.youtube.com/results?search_query=${encodeURIComponent(s.youtubeQuery)}" target="_blank">▶ YouTube</a>
+          <a class="skill-link skill-link-course" href="${s.courseLink}" target="_blank">🎓 Cours en ligne</a>
+        </div>
+      </div>
+    </div>`).join('');
+  document.getElementById('skillGapList').innerHTML = gaps;
+
+  // Job platforms
+  const platforms = (data.jobPlatforms || []).map(p => `
+    <div class="job-offer-item ${isRTL ? 'rtl' : ''}">
+      <div>
+        <div class="job-offer-title">${p.name}</div>
+        <div class="job-offer-meta">${p.description}</div>
+      </div>
+      <a class="job-offer-link" href="${p.url}" target="_blank">${currentLang === 'ar' ? 'زور الموقع' : currentLang === 'fr' ? 'Visiter' : 'Visit'} →</a>
+    </div>`).join('');
+  document.getElementById('jobOffersList').innerHTML = platforms;
+
+  document.getElementById('profileResults').style.display = 'block';
+  document.getElementById('profileResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function switchToJobGuide(title) {
+  setMode('job');
+  document.getElementById('searchInput').value = title;
+  doSearch();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function switchToBizGuide(title) {
+  setMode('business');
+  document.getElementById('searchInput').value = title;
+  doSearch();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── RENDER RESULT ─────────────────────────────────────────
+function renderResult(data, query) {
+  document.getElementById('loadingState').style.display = 'none';
+  const isRTL = currentLang === 'ar';
+  const dir = isRTL ? 'rtl' : 'ltr';
+  const rc = isRTL ? 'rtl' : '';
+  const labels = {
+    fr: { overview:'Aperçu', paperwork:'Documents à préparer', certs:'Certifications requises', admins:'Administrations à contacter', plan:"Plan d'action détaillé", tips:'Conseils pratiques', funding:'Financement', legal:'Structures juridiques', licenses:'Licences & Autorisations', badge: currentMode==='job'?'Métier':'Entreprise' },
+    ar: { overview:'نظرة عامة', paperwork:'الوثائق اللازمة', certs:'الشهادات المطلوبة', admins:'الإدارات المعنية', plan:'خطة العمل التفصيلية', tips:'نصائح عملية', funding:'التمويل', legal:'الهياكل القانونية', licenses:'التراخيص والرخص', badge: currentMode==='job'?'مهنة':'مشروع' },
+    en: { overview:'Overview', paperwork:'Documents to Prepare', certs:'Required Certifications', admins:'Administrations to Contact', plan:'Detailed Action Plan', tips:'Practical Tips', funding:'Funding Options', legal:'Legal Structures', licenses:'Licences & Authorizations', badge: currentMode==='job'?'Career':'Business' }
+  };
+  const L = labels[currentLang];
+  const isJob = currentMode === 'job';
+  const title = isJob ? (data.jobTitle || query) : (data.businessTitle || query);
+
+  let html = `<div class="result-header" dir="${dir}"><div class="result-badge">🇹🇳 ${L.badge}</div><div class="result-title">${title}</div><div class="result-subtitle">${query}</div></div><div class="result-body">`;
+  if (data.overview) html += sec(L.overview,'🔍','icon-gold',dir,rc,`<div class="section-content">${data.overview}</div>`);
+  if (!isJob && data.legalStructures?.length) {
+    const items = data.legalStructures.map(ls=>`<div class="step-item"><div class="step-content"><div class="step-title">${ls.type}</div><div class="step-detail">${ls.pros}${ls.minCapital?` — Capital min: <strong>${ls.minCapital}</strong>`:''}</div></div></div>`).join('');
+    html += sec(L.legal,'⚖️','icon-purple',dir,rc,`<div class="steps-list">${items}</div>`);
+  }
+  if (data.paperwork?.length) {
+    const items = data.paperwork.map(p=>`<div class="step-item"><div class="step-num">📄</div><div class="step-content"><div class="step-title">${p.title}</div><div class="step-detail">${p.detail}</div></div></div>`).join('');
+    html += sec(L.paperwork,'📋','icon-gold',dir,rc,`<div class="steps-list">${items}</div>`);
+  }
+  const certsData = isJob ? data.certifications : data.licenses;
+  if (certsData?.length) {
+    const items = certsData.map(c=>`<div class="step-item"><div class="step-num">🎓</div><div class="step-content"><div class="step-title">${c.title}</div><div class="step-detail">${c.detail}</div></div></div>`).join('');
+    html += sec(isJob?L.certs:L.licenses,isJob?'🎓':'🏷️','icon-blue',dir,rc,`<div class="steps-list">${items}</div>`);
+  }
+  if (data.administrations?.length) {
+    const items = data.administrations.map(a=>`<div class="step-item"><div class="step-num">🏛️</div><div class="step-content"><div class="step-title">${a.name}</div><div class="step-detail">${a.role}${a.contact?` — ${a.contact}`:''}</div></div></div>`).join('');
+    html += sec(L.admins,'🏛️','icon-green',dir,rc,`<div class="steps-list">${items}</div>`);
+  }
+  if (data.actionPlan?.length) {
+    const items = data.actionPlan.map(s=>`<div class="step-item"><div class="step-num">${s.step}</div><div class="step-content"><div class="step-title">${s.title}</div><div class="step-detail">${s.detail}</div></div></div>`).join('');
+    html += sec(L.plan,'🗺️','icon-gold',dir,rc,`<div class="steps-list">${items}</div>`);
+  }
+  if (!isJob && data.funding) html += sec(L.funding,'💰','icon-green',dir,rc,`<div class="section-content">${data.funding}</div>`);
+  if (data.tips) html += sec(L.tips,'💡','icon-red',dir,rc,`<div class="section-content">${data.tips}</div>`);
+  html += '</div>';
+
+  const container = document.getElementById('resultContainer');
+  container.innerHTML = html;
+  container.style.display = 'block';
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function sec(title, icon, iconClass, dir, rc, body) {
+  return `<div class="result-section ${rc}" dir="${dir}"><div class="section-label"><div class="section-icon ${iconClass}">${icon}</div><div class="section-title">${title}</div></div>${body}</div>`;
+}
+</script>
+</body>
+</html>
